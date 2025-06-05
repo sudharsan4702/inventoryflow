@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.flex-grow-1 {
+  margin-left: 200px; /* Sidebar width */
+}
+
+@media (max-width: 768px) {
+  .flex-grow-1 {
+    margin-left: 0;
+  }
+}

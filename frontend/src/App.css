@@ -1,0 +1,193 @@
+/* Sidebar Default Styles */
+.sidebar {
+  height: 100vh;
+  background-color: #212529;
+  color: white;
+  transition: width 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Full Sidebar for Large Screens */
+.sidebar.open {
+  width: 220px;
+}
+
+/* Collapsed Sidebar (Only Icons) */
+.sidebar.collapsed {
+  width: 60px;
+  overflow: hidden;
+  align-items: center;
+}
+
+/* Sidebar Title */
+.sidebar-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.sidebar-title.hidden {
+  display: none;
+}
+
+/* Sidebar Links */
+.nav-link {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-link .icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* When sidebar is collapsed, only show icons */
+.sidebar.collapsed .nav-link .icon {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Active Link */
+.active-link {
+  background: rgba(131, 131, 131, 0.3);
+  font-weight: bold;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  position: absolute;
+  top: 15px;
+  left: 230px; /* Place it outside the sidebar */
+  background: #212529;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1100;
+  transition: left 0.3s ease-in-out;
+}
+
+/* When Sidebar is collapsed, move button closer */
+.sidebar.collapsed + .toggle-btn {
+  left: 70px;
+}
+
+/* Main Content */
+.main-content {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* When sidebar is collapsed, adjust content margin */
+.sidebar.collapsed ~ .main-content {
+  margin-left: 60px;
+}
+
+/* Hide Toggle Button on Large Screens */
+@media (min-width: 769px) {
+  .toggle-btn {
+    display: none;
+  }
+}
+
+/* Mobile Sidebar Behavior */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar.open {
+    width: 220px;
+  }
+
+  .sidebar.mobile + .toggle-btn {
+    left: 70px;
+  }
+
+  .sidebar.mobile.open + .toggle-btn {
+    left: 230px;
+  }
+
+  /* Adjust content for mobile */
+  .main-content {
+    margin-left: 60px;
+  }
+
+  .sidebar.open ~ .main-content {
+    margin-left: 220px;
+  }
+}
+
+/* Hover Effect */
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #f8f9fa; /* Light color for better visibility */
+}
+/* Ensure the main content shifts properly */
+.main-content {
+  margin-left: 60px; /* Default when sidebar is collapsed */
+  transition: margin-left 0.3s ease-in-out;
+  padding: 10px;
+}
+
+/* When sidebar is expanded */
+.sidebar.open ~ .main-content {
+  margin-left: 220px; /* Shift main content */
+}
+
+/* Fix Sidebar for Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 60px;
+    height: 100vh;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    width: 220px;
+  }
+
+  /* Content should not shift on mobile */
+  .sidebar.open ~ .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Adjust Toggle Button */
+.toggle-btn {
+  left: 70px;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open + .toggle-btn {
+  left: 230px;
+}
+
+/* Mobile Toggle Button Adjustment */
+@media (max-width: 768px) {
+  .sidebar + .toggle-btn {
+    left: 70px;
+  }
+
+  .sidebar.open + .toggle-btn {
+    left: 230px;
+  }
+}
